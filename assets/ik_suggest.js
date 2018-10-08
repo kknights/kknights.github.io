@@ -49,7 +49,10 @@ var pluginName = "ik_suggest",
 			.on('keyup', {'plugin': plugin}, plugin.onKeyUp) // add keyup event
 			.on('focusout', {'plugin': plugin}, plugin.onFocusOut);  // add focusout event
 
-		plugin.list = $('<ul/>').addClass('suggestions');
+		plugin.list = $('<ul/>').addClass('suggestions').attr({
+			'role': 'region',
+			'aria-live':'polite'
+		});
 
 		$elem.after(plugin.notify, plugin.list);
 
