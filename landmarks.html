@@ -21,8 +21,6 @@
             </div>
         </div>
 
-
-
         <div class="" style="z-index: auto; position: static; top: auto;" id="lrg_topnav">
             <div style="width: 100%;" id="topnavlistcontainer" role="navigation" aria-label="main navigation tabs">
                 <a name="main-nav" id="main-nav"></a>
@@ -36,7 +34,6 @@
                 </ul>
             </div>
         </div>
-
 
 
         <div class="logoutbar" role="search" tabindex="0">&nbsp;
@@ -95,7 +92,7 @@
 
                 <div class="profile" role="main" tabindex="0">
                     <h2>Join our community</h2>
-                    <div id="feedback">&nbsp;</div>
+                    <div id="feedback" role="alert">&nbsp;</div>
                     <form id="join_form" role="form">
                         <dl>
                             <dt>
@@ -104,6 +101,8 @@
                             </dt>
                             <dd>
                             </dd>
+
+                            <!-- three required fields -->
                             <dt>
                                 <label for="username">Username:</label><img src="images/required.gif" alt="Required Field"
                                     class="img" />
@@ -112,6 +111,7 @@
                                     aria-required="true" aria-describedby="username_error"><br />
                                 <span id="username_error">&nbsp;</span><br />
                             </dd>
+
                             <dt>
                                 <label for="password">Password:</label>
                                 <img src="images/required.gif" alt="Required Field" />
@@ -128,6 +128,11 @@
                                 <input type="text" name="email" size="30" id="email" value="" class="input" /><br />
                                 <span id="email_error">&nbsp;</span>
                             </dd>
+
+
+
+
+
                             <dt>
                                 <label for="fname">First Name:</label>
                             </dt>
