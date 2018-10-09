@@ -88,6 +88,17 @@
 		$me = $(event.target);
 		$panel = $me.parent('dt').next();
 
+
+
+
+		// toggle aria-expanded value on button click.
+		$(this).attr('aria-expanded', function (i, attr) {
+			return attr == 'true' ? 'false' : 'true'
+			// TODO add aria-hidden: false to panels when accordions are expanded
+		});
+
+
+
 		if(plugin.options.autoCollapse) { // expand current panel and collapse the rest
 			plugin.headers.each(function(i, el) {
 				var $hdr, $btn;
@@ -97,9 +108,11 @@
 
 				if($btn[0] != $(event.currentTarget)[0]) {
 					$btn.removeClass('expanded');
+					$btn.attr('aria-expanded', false);
 					$hdr.next().slideUp(plugin.options.animationSpeed);
 				} else {
 					$btn.addClass('expanded');
+					$btn.attr('aria-expanded', true);
 					$hdr.next().slideDown(plugin.options.animationSpeed);
 				}
 			});
