@@ -65,7 +65,7 @@
 			$me.attr({
 				'id': id,
 				'role': 'region', // add role region to each panel
-                'aria-hidden': true, // mark all panels as hidden
+                'aria-hidden': true, // mark all panels as hidden on page load
                 'tabindex': 0 // add panels into the tab order
 			});
 		}).hide();
@@ -89,7 +89,6 @@
 		$panel = $me.parent('dt').next();
 
 		if(plugin.options.autoCollapse) { // expand current panel and collapse the rest
-
 			plugin.headers.each(function(i, el) {
 				var $hdr, $btn;
 
@@ -106,15 +105,14 @@
 			});
 
 		} else { // toggle current panel depending on the state
-
 			isVisible = !!$panel.is(':visible');
 			$panel.slideToggle({ duration: plugin.options.animationSpeed });
-
 		}
 	};
 
-	$.fn[pluginName] = function ( options ) {
 
+
+	$.fn[pluginName] = function ( options ) {
 		return this.each(function () {
 
 			if ( !$.data(this, pluginName )) {
