@@ -89,15 +89,25 @@
 		$panel = $me.parent('dt').next();
 
 
-		console.log(this);
 		// toggle aria-expanded value on button click.
-		$(this).attr('aria-expanded', function (i, attr) {
-			return attr == 'true' ? 'false' : 'true'
-		});
+		// $(this).attr('aria-expanded', function (i, attr) {
+			// 	return attr == 'true' ? 'false' : 'true'
+			// });
 
-		$panel.attr('aria-hidden', function (i, attr) {
-			return attr == 'true' ? 'false' : 'true'
-		});
+
+		// console.log(this);
+
+		function ariaExpandedToggle(){
+			var $btn = $('.button');
+
+				$btn.attr('aria-expanded', function (i, attr) {
+					return attr == 'true' ? 'false' : 'true'
+				});
+
+				$panel.attr('aria-hidden', function (i, attr) {
+					return attr == 'true' ? 'false' : 'true'
+				});
+		}
 
 
 
@@ -107,16 +117,18 @@
 
 				$hdr = $(el);
 				$btn = $hdr.find('.button');
+				$panel = $('dd');
 
 				if($btn[0] != $(event.currentTarget)[0]) {
 					$btn.removeClass('expanded');
 					$btn.attr('aria-expanded', false);
-					// $hdr.next('.panel').attr('aria-hidden', false);
+					$hdr.next($panel).attr('aria-hidden', true);
 					$hdr.next().slideUp(plugin.options.animationSpeed);
+
 				} else {
 					$btn.addClass('expanded');
 					$btn.attr('aria-expanded', true);
-					// $hdr.next('.panel').attr('aria-hidden', false);
+					$(this).next($panel).attr('aria-hidden', false);
 					$hdr.next().slideDown(plugin.options.animationSpeed);
 				}
 			});
@@ -124,6 +136,7 @@
 		} else { // toggle current panel depending on the state
 			isVisible = !!$panel.is(':visible');
 			$panel.slideToggle({ duration: plugin.options.animationSpeed });
+			ariaExpandedToggle();
 		}
 	};
 
