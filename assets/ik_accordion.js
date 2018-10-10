@@ -89,26 +89,16 @@
 		$panel = $me.parent('dt').next();
 
 
-		// toggle aria-expanded value on button click.
-		// $(this).attr('aria-expanded', function (i, attr) {
-			// 	return attr == 'true' ? 'false' : 'true'
-			// });
-
-
-		// console.log(this);
-
 		function ariaExpandedToggle(){
-			var $btn = $('.button');
 
-				$btn.attr('aria-expanded', function (i, attr) {
-					return attr == 'true' ? 'false' : 'true'
-				});
+			$me.attr('aria-expanded', function (i, attr) {
+				return attr == 'true' ? 'false' : 'true'
+			});
 
-				$panel.attr('aria-hidden', function (i, attr) {
-					return attr == 'true' ? 'false' : 'true'
-				});
+			$panel.attr('aria-hidden', function (i, attr) {
+				return attr == 'true' ? 'false' : 'true'
+			});
 		}
-
 
 
 		if(plugin.options.autoCollapse) { // expand current panel and collapse the rest
