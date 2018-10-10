@@ -111,10 +111,12 @@
 				if($btn[0] != $(event.currentTarget)[0]) {
 					$btn.removeClass('expanded');
 					$btn.attr('aria-expanded', false);
+					// $hdr.next('.panel').attr('aria-hidden', false);
 					$hdr.next().slideUp(plugin.options.animationSpeed);
 				} else {
 					$btn.addClass('expanded');
 					$btn.attr('aria-expanded', true);
+					// $hdr.next('.panel').attr('aria-hidden', false);
 					$hdr.next().slideDown(plugin.options.animationSpeed);
 				}
 			});
@@ -122,7 +124,6 @@
 		} else { // toggle current panel depending on the state
 			isVisible = !!$panel.is(':visible');
 			$panel.slideToggle({ duration: plugin.options.animationSpeed });
-
 		}
 	};
 
