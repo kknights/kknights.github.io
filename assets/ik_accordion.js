@@ -89,12 +89,14 @@
 		$panel = $me.parent('dt').next();
 
 
-
-
+		console.log(this);
 		// toggle aria-expanded value on button click.
 		$(this).attr('aria-expanded', function (i, attr) {
 			return attr == 'true' ? 'false' : 'true'
-			// TODO add aria-hidden: false to panels when accordions are expanded
+		});
+
+		$panel.attr('aria-hidden', function (i, attr) {
+			return attr == 'true' ? 'false' : 'true'
 		});
 
 
@@ -120,6 +122,7 @@
 		} else { // toggle current panel depending on the state
 			isVisible = !!$panel.is(':visible');
 			$panel.slideToggle({ duration: plugin.options.animationSpeed });
+
 		}
 	};
 
