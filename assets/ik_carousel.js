@@ -43,7 +43,8 @@
 			.addClass('ik_carousel')
 		    .on('keydown', {'plugin': plugin}, plugin.onKeyDown)
 			.on('focusin mouseenter', {'plugin': plugin}, plugin.stopTimer)
-			.on('focusin mouseleave', {'plugin': plugin}, plugin.startTimer)
+			.on('focusout mouseleave', {'plugin': plugin}, plugin.startTimer);
+
 
 		$controls = $('<div/>')
 			.attr({
@@ -81,12 +82,9 @@
 						'background-image': 'url(' + $src + ')'
 					});
 
-
-
 				$('<li/>')
 					.on('click', {'plugin': plugin, 'slide': i}, plugin.gotoSlide)
 					.appendTo($navbar);
-
 			});
 
 		$('<div/>') // add instructions for screen reader users
@@ -139,6 +137,8 @@
 	 * @param {object} event.data - Event data.
 	 * @param {object} event.data.plugin - Reference to plugin.
 	 */
+
+
 	Plugin.prototype.stopTimer = function (event) {
 		var plugin = event.data.plugin;
 		clearInterval(plugin.timer);
@@ -147,7 +147,6 @@
 		if (event.type === 'focusin') {
 			plugin.element.attr({'aria-live': 'polite'});
 		}
-
 	};
 
 	/**
@@ -209,7 +208,6 @@
 				})
 				.removeClass('next')
 				.addClass('active');
-
 		});
 
 		plugin.navbuttons.removeClass('active').eq(n).addClass('active');
@@ -226,30 +224,30 @@
 	}
 
 	/**
-* Handles keydown event on the next/prev links.
-*
-* @param {Object} event - Keyboard event.
-* @param {object} event.data - Event data.
-* @param {object} event.data.plugin - Reference to plugin.
-*/
-Plugin.prototype.onKeyDown = function (event) {
+		* Handles keydown event on the next/prev links.
+		*
+		* @param {Object} event - Keyboard event.
+		* @param {object} event.data - Event data.
+		* @param {object} event.data.plugin - Reference to plugin.
+		*/
+	Plugin.prototype.onKeyDown = function (event) {
 
-    var plugin = event.data.plugin;
+		var plugin = event.data.plugin;
 
-    switch (event.keyCode) {
+		switch (event.keyCode) {
 
-        case ik_utils.keys.left:
-            event.data = {'plugin': plugin, 'slide': 'left'};
-            plugin.gotoSlide(event);
-            break;
-        case ik_utils.keys.right:
-            event.data = {'plugin': plugin, 'slide': 'right'};
-            plugin.gotoSlide(event);
-            break;
-        case ik_utils.keys.esc:
-            plugin.element.blur();
-            break;
-        }
-    }
+			case ik_utils.keys.left:
+				event.data = {'plugin': plugin, 'slide': 'left'};
+				plugin.gotoSlide(event);
+				break;
+			case ik_utils.keys.right:
+				event.data = {'plugin': plugin, 'slide': 'right'};
+				plugin.gotoSlide(event);
+				break;
+			case ik_utils.keys.esc:
+				plugin.element.blur();
+				break;
+			}
+		}
 
 })( jQuery, window, document );
