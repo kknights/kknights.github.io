@@ -42,8 +42,8 @@
 			})
 			.addClass('ik_carousel')
 		    .on('keydown', {'plugin': plugin}, plugin.onKeyDown)
-			.on('mouseenter', {'plugin': plugin}, plugin.stopTimer)
-			.on('mouseleave', {'plugin': plugin}, plugin.startTimer)
+			.on('focusin mouseenter', {'plugin': plugin}, plugin.stopTimer)
+			.on('focusin mouseleave', {'plugin': plugin}, plugin.startTimer)
 
 		$controls = $('<div/>')
 			.attr({
@@ -99,8 +99,6 @@
 			.appendTo($elem);
 
 
-
-
 		plugin.navbuttons = $navbar.children('li');
 		plugin.slides.first().addClass('active');
 		plugin.navbuttons.first().addClass('active');
@@ -152,7 +150,7 @@
 
 		if (event.type === 'focusin') {
 			plugin.element.attr({'aria-live': 'polite'});
-			}
+		}
 
 	};
 
