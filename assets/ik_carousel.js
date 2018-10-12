@@ -124,14 +124,12 @@
 			plugin.timer = null;
 		}
 
-		if (event.type === 'focusout') {
-			plugin.element.removeAttr('aria-live');
-		}
 
 		plugin.timer = setInterval(plugin.gotoSlide, plugin.options.animationSpeed, {'data':{'plugin': plugin, 'slide': 'right'}});
 
-
-
+		if (event.type === 'focusout') {
+			plugin.element.removeAttr('aria-live');
+		}
 	};
 
 	/**
@@ -142,11 +140,9 @@
 	 * @param {object} event.data.plugin - Reference to plugin.
 	 */
 	Plugin.prototype.stopTimer = function (event) {
-
 		var plugin = event.data.plugin;
 		clearInterval(plugin.timer);
 		plugin.timer = null;
-
 
 		if (event.type === 'focusin') {
 			plugin.element.attr({'aria-live': 'polite'});
@@ -211,7 +207,7 @@
 				.attr({
 					'aria-hidden': 'false'
 				})
-			.removeClass('next')
+				.removeClass('next')
 				.addClass('active');
 
 		});
